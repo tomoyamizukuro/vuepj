@@ -50,10 +50,11 @@
       routes: [
         {
           path: '/a',
-          redirect: '/b'
+          redirect: { name: 'page-b'}
         },
         {
           path: '/b',
+          name: 'page-b',
           component: B
         },
         {
