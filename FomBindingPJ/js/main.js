@@ -3,6 +3,7 @@ var app = new Vue({
   data: {
     message: 'Hello Vue.js!',
     checked: false,
-    colors: []
+    colors: [],
+    color: ''
   }
 })
