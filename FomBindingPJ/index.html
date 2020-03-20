@@ -8,6 +8,15 @@
 </head>
 <body>
   <div id="app">
+    <select v-model="selected">
+      <option disable value="">Please select one</option>
+      <option>Red</option>
+      <option>Green</option>
+      <option>Blue</option>
+    </select>
+    <p>
+      {{selected}}
+    </p>
     <input type="radio" id="red" value="Red" v-model="color">
     <label for="red">Red</label>
     <input type="radio" id="green" value="Green" v-model="color">

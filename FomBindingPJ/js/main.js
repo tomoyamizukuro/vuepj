@@ -4,6 +4,7 @@ var app = new Vue({
     message: 'Hello Vue.js!',
     checked: false,
     colors: [],
-    color: ''
+    color: '',
+    selected: ''
   }
 })
