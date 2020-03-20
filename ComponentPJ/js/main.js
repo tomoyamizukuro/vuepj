@@ -8,7 +8,7 @@ Vue.component('button-counter', {
       count: 0
     }
   },
-  template: '<button v-on:click="count++">{{ count }}</button>'
+  template: '<div><span>count: <button v-on:click="count++">{{ count }}</button></span></div>'
 })
 
 var app = new Vue({

@@ -8,10 +8,16 @@
 </head>
 <body>
   <div id="app">
-
+    <button v-on:click="show=!show">
+      Change
+    </button>
+    <transition>
+      <p v-show="show">
+        Hello Transition
+      </p>
+    </transition>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
