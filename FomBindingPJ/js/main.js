@@ -5,6 +5,6 @@ var app = new Vue({
     checked: false,
     colors: [],
     color: '',
-    selected: ''
+    selected: []
   }
 })
