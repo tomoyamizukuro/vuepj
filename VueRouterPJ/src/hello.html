@@ -8,14 +8,22 @@
 <body>
   <div id="app">
     <router-link to="/">HOME</router-link>
-    <router-link to="/users/123">User</router-link>
-    <router-link to="/users/123/profile">Profile</router-link>
-    <router-link to="/users/123/posts">Posts</router-link>
+    <router-link to="/a">A</router-link>
+    <router-link to="/b">B</router-link>
     <router-view></router-view>
+    <div>
+      <router-link to="/users/123">User</router-link>
+      <router-link to="/users/123/profile">Profile</router-link>
+      <router-link to="/users/123/posts">Posts</router-link>
+      <router-view></router-view>
+    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
   <script src="https://unpkg.com/vue-router@3.0.6"></script>
   <script>
+    const B = {
+      template: '<div><h2>This is B.</h2></div>'
+    }
     const User = {
       template: `
         <div class="user">
@@ -40,6 +48,14 @@
     }
     const router = new VueRouter({
       routes: [
+        {
+          path: '/a',
+          redirect: '/b'
+        },
+        {
+          path: '/b',
+          component: B
+        },
         {
           path: '/users/:userId', component: User,
           children: [
