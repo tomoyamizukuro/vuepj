@@ -1,0 +1,29 @@
+<html lang ="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Watcher Property Practice</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div id="app">
+      <h2>Watcher Property Practice PJ</h2>
+      <p>
+        <input type="text" v-model:value="km">km
+      </p>
+      <p>
+        <input type="text" v-model:value="m">m
+      </p>
+      <p>
+        <input type="text" v-model:value="mm">mm
+      </p>
+      <p>
+        {{ message }}
+      </p>
+      <input type="text" v-model:value="message">
+      <pre>{{ $data }}</pre>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="js/main.js"></script>
+  </body>
+  </html>
+</html>
