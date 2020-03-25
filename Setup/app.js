@@ -3,7 +3,8 @@ var app = new Vue({
   data: {
     playerHealth: 100,
     monsterHealth: 100,
-    gameIsRunning: false
+    gameIsRunning: false,
+    turns: []
   },
   methods: {
     startGame: function() {
@@ -11,26 +12,55 @@ var app = new Vue({
       // ゲーム開始時にヘルスゲージを初期化する
       this.playerHealth = 100
       this.monsterHealth = 100
+      this.turns = []
     },
     attack: function() {
-      this.monsterHealth -= this.calculateDamage(3, 10)
+      let damage = this.calculateDamage(3, 10)
+      this.monsterHealth -= damage
+      this.turns.unshift({
+        isPlayer: true,
+        text: 'Player hits Monster for ' + damage
+      })
       if (this.checkWin()) {
         return
       }
       this.monsterAttacks()
     },
     specialAttack: function() {
-      this.monsterHealth -= this.calculateDamage(10, 20)
+      let damage = this.calculateDamage(10, 20)
+      this.monsterHealth -= damage
+      this.turns.unshift({
+        isPlayer: true,
+        text: 'Player hits Monster hard for ' + damage
+      })
       if (this.checkWin()) {
         return
       }
       this.monsterAttacks()
     },
-    heal: function() {},
-    giveUp: function() {},
+    heal: function() {
+      if(this.playerHealth <= 90){
+      this.playerHealth += 10
+      } else {
+      this.playerHealth = 100
+      }
+      this.turns.unshift({
+        isPlayer: true,
+        text: 'Player heal'
+      })
+      this.monsterAttacks()
+    },
+    giveUp: function() {
+      this.gameIsRunning = false
+    },
     monsterAttacks: function() {
-      this.playerHealth -= this.calculateDamage(2, 12)
-      thi.checkWin()
+      let damage = this.calculateDamage(2, 12)
+      this.playerHealth -= damage
+      this.turns.unshift({
+        isPlayer: false,
+        text: 'Monster hits Player for ' + damage
+      })
+      this.checkWin()
     },
     calculateDamage: function(min, max) {
       return Math.max(Math.floor(Math.random() * max) + 1, min)
